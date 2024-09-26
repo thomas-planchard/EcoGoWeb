@@ -62,17 +62,7 @@ export const ScrollDownArrow = styled.div`
   }
 `;
 
-// Content wrapper for the remaining site
-export const ContentWrapper = styled(Layout.Content)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: ${colors.lightGray};
-  height: 100vh;
-  padding: 100px 20px;
-  text-align: center;
-`;
+
 
 export const CustomHeader = styled(Layout.Header).withConfig({
   shouldForwardProp: (prop) => prop !== 'transparent',

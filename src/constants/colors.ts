@@ -7,7 +7,9 @@ const colors = {
     softMint: '#90D7B4',
     strongMint: '#0fff4f',
     lightMint: '#94C487',
+    darkGrey: '#3a3b3c',
     lightGray: '#AAB0B7',
+    veryLightBrown: '#fffafa', 
     lightBrown: '#fada9e',
   };
 
