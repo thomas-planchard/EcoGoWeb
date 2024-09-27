@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Modal } from 'antd';
 import colors from '../../constants/colors.ts';
 import logo from '../../assets/logo.webp';
 import logoWhite from '../../assets/logoWhite.webp';
 import promoVideo from '../../assets/video.mp4';
 import Qrcode from '../../assets/qrCode.svg';
+import firstSection from '../../assets/globalWarming.jpg';
+import secondSection from '../../assets/ecosystem.jpg';
 
 import {
+  AppLayout,
   FullScreenVideo,
   TextOverlay,
   ArrowContainer,
@@ -16,9 +18,11 @@ import {
   LogoContainer,
   MenuContainer,
   RightButton,
+  ModalContainer,
+  SectionContainer,
+  SectionContent,
+  SectionImage,
 } from './HomePage.ts';
-
-
 
 
 function HomePage() {
@@ -57,8 +61,33 @@ function HomePage() {
     setIsModalVisible(false);
   };
 
+    // IntersectionObserver hook
+    const useIntersectionObserver = (elementRef: React.RefObject<HTMLElement>) => {
+      const [isVisible, setIsVisible] = useState(false);
+  
+      useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true); // Trigger the visibility flag
+            observer.disconnect(); // Disconnect after showing to avoid retrigger
+          }
+        });
+  
+        if (elementRef.current) {
+          observer.observe(elementRef.current);
+        }
+  
+        return () => observer.disconnect();
+      }, [elementRef]);
+  
+      return isVisible;
+    };
+  
+    const sectionRefs = [useRef(null), useRef(null), useRef(null)];
+  
+
   return (
-    <Layout>
+    <AppLayout>
       {/* Full-screen video */}
       <FullScreenVideo>
         <video 
@@ -76,8 +105,8 @@ function HomePage() {
 
         {/* Text Overlay on top of the video */}
         <TextOverlay>
-          <h1 style={{ fontSize: '5rem', color: 'white', fontWeight: 'bold' }}>Measure Your Impact, <br /><span style={{ fontSize: '5rem', color: colors.strongMint }}>Make a Difference</span></h1>
-          <p style={{ fontSize: '1.6rem', color: 'white' }}>
+          <h1 className='whiteTitle'>Measure Your Impact, <br /><span className='greenTitle'>Make a Difference</span></h1>
+          <p className='text'>
           Millions of people want to reduce their carbon footprint, but don’t know where to start. We created EcoGo to make personal climate action simple and accessible, empowering everyone to take control of their environmental impact and be a part of the solution.
           </p>
         </TextOverlay>
@@ -91,7 +120,7 @@ function HomePage() {
       {/* Header with transparent background until scroll */}
       <CustomHeader transparent={isHeaderTransparent}>
         <LogoContainer>
-          <img src={isHeaderTransparent ? logoWhite : logo} alt="Logo" style={{height: '4rem'}}/>
+          <img src={isHeaderTransparent ? logoWhite : logo} alt="Logo"/>
           <Link to="/"></Link>
         </LogoContainer>
 
@@ -112,71 +141,72 @@ function HomePage() {
       </CustomHeader>
 
            {/* Modal for QR Code */}
-        <Modal
+        <ModalContainer
           title="Scan to Access the Project"
           open={isModalVisible}
           onOk={handleOk}
           onCancel={handleCancel}
           footer={null} 
         >
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <a href="https://github.com/thomas-planchard/moonshotProject" rel="nofollow">
-          <img src={Qrcode} style={{height: '20rem'}}></img>
+          <a className="qrCodeContainer" href="https://github.com/thomas-planchard/moonshotProject"rel="nofollow">
+          <img src={Qrcode}></img>
           </a>
-          </div>
-        </Modal>
+        </ModalContainer>
         {/* Section 1: Problem */}
-        <section style={{ display: 'flex', flexDirection: 'row-reverse', padding: '5rem 2rem', backgroundColor: colors.veryLightBrown}}>
-          <div style={{ width: '50%', padding: '2rem', textAlign: 'left' }}>
-            <h2 style={{ fontSize: '3rem', color: colors.darkGrey }}>The Problem</h2>
-            <p style={{ fontSize: '1.5rem', color: colors.softMint }}>
-              Millions of people want to reduce their carbon footprint but don’t know where to start. This uncertainty leads to inaction, and that’s where we step in.
-            </p>
-          </div>
-          <div style={{ width: '50%', padding: '2rem' }}>
-            <img src="https://via.placeholder.com/500x300" alt="Problem" style={{ width: '100%' }} />
-          </div>
-        </section>
+      <SectionContainer reverse bgColor=""  ref={sectionRefs[0]} className={useIntersectionObserver(sectionRefs[0]) ? 'show' : ''}>
+        <SectionContent align='left'>
+          <h2>The Problem</h2>
+          <p>
+            As the planet warms and ecosystems are disrupted, our everyday actions contribute to the problem, and
+            <span style={{color: colors.softMint}}> transportation is a major culprit</span>. According to the International Energy Agency (IEA), transportation
+            accounts for nearly <span style={{color: colors.softMint}}>24% of global CO2 emissions</span>. What makes this issue pressing is that transportation is one of
+            the easiest habits to change.
+          </p>
+        </SectionContent>
+        <SectionImage height='80%'>
+          <img src={firstSection} alt="Problem" />
+        </SectionImage>
+      </SectionContainer>
 
-        {/* Section 2: Solution */}
-        <section style={{ display: 'flex', padding: '5rem 2rem', backgroundColor: colors.veryLightBrown }}>
-          <div style={{ width: '50%', padding: '2rem', textAlign: 'right' }}>
-            <h2 style={{ fontSize: '3rem', color: colors.darkGrey }}>Our Solution</h2>
-            <p style={{ fontSize: '1.5rem', color: colors.softMint }}>
-              EcoGo provides an easy-to-use platform for individuals to calculate, monitor, and reduce their carbon footprint, offering actionable insights and sustainable solutions.
-            </p>
-          </div>
-          <div style={{ width: '50%', padding: '2rem' }}>
-            <img src="https://via.placeholder.com/500x300" alt="Solution" style={{ width: '100%' }} />
-          </div>
-        </section>
+      {/* Section 2: Solution */}
+      <SectionContainer reverse={false} bgColor="" ref={sectionRefs[1]} className={useIntersectionObserver(sectionRefs[1]) ? 'show' : ''}>
+        <SectionContent align="right">
+          <h2>Our Solution</h2>
+          <p>
+          <span style={{color: colors.softMint}}>EcoGo is a smart mobile app</span> that empowers you to track, reduce, and visualize your carbon footprint in real-time. Whether you’re walking, cycling, driving, or taking public transport, EcoGo calculates <span style={{color: colors.softMint}}>your environmental impact</span>, rewards sustainable choices, and helps you build eco-conscious habits—all in one engaging, easy-to-use platform.
+          </p>
+        </SectionContent>
+        <SectionImage height='100%'>
+          <img src={secondSection} alt="Solution" />
+        </SectionImage>
+      </SectionContainer>
 
-        {/* Section 3: Story with Timeline */}
-        <section style={{ padding: '5rem 2rem', backgroundColor: colors.veryLightBrown }}>
-          <h2 style={{ fontSize: '3rem', textAlign: 'center', color: colors.primaryGreen }}>Our Story</h2>
-          <div style={{ margin: '4rem 0', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <ul style={{ listStyle: 'none', padding: '0', width: '60%' }}>
-              <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-                <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2020</div>
-                <div>EcoGo was conceptualized as a solution to empower individuals to take control of their environmental impact.</div>
-              </li>
-              <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-                <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2021</div>
-                <div>We launched the first version of the app, helping early adopters measure their carbon footprint.</div>
-              </li>
-              <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-                <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2022</div>
-                <div>Expanded features to include personalized action plans for sustainable living.</div>
-              </li>
-              <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-                <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2023</div>
-                <div>Our community reached 1 million users, each making a difference in their way.</div>
-              </li>
-            </ul>
-          </div>
-        </section>
+      {/* Section 3: Story with Timeline */}
+      <SectionContainer reverse={false} bgColor="" ref={sectionRefs[2]} className={useIntersectionObserver(sectionRefs[2]) ? 'show' : ''}>
+        <SectionContent align="center">
+          <h2 style={{ color: colors.primaryGreen }}>Our Story</h2>
+          <ul style={{ listStyle: 'none', padding: '0', width: '60%', margin: 'auto' }}>
+            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
+              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2020</div>
+              <div>EcoGo was conceptualized as a solution to empower individuals to take control of their environmental impact.</div>
+            </li>
+            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
+              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2021</div>
+              <div>We launched the first version of the app, helping early adopters measure their carbon footprint.</div>
+            </li>
+            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
+              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2022</div>
+              <div>Expanded features to include personalized action plans for sustainable living.</div>
+            </li>
+            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
+              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2023</div>
+              <div>Our community reached 1 million users, each making a difference in their way.</div>
+            </li>
+          </ul>
+        </SectionContent>
+      </SectionContainer>
           
-    </Layout>
+    </AppLayout>
   );
 }
 
