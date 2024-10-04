@@ -1,28 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import colors from '../../constants/colors.ts';
-import logo from '../../assets/logo.webp';
-import logoWhite from '../../assets/logoWhite.webp';
 import promoVideo from '../../assets/video.mp4';
 import Qrcode from '../../assets/qrCode.svg';
 import firstSection from '../../assets/globalWarming.jpg';
 import secondSection from '../../assets/ecosystem.jpg';
+import HeaderComponent from '../../components/Header.tsx';
+import {AppLayout} from '../../GlobalStyle.ts';
 
 import {
-  AppLayout,
   FullScreenVideo,
   TextOverlay,
   ArrowContainer,
   ScrollDownArrow,
-  CustomHeader,
-  LogoContainer,
-  MenuContainer,
-  RightButton,
   ModalContainer,
   SectionContainer,
   SectionContent,
   SectionImage,
+  HorizontalTimeline,
 } from './HomePage.ts';
+
+
 
 
 function HomePage() {
@@ -48,10 +45,6 @@ function HomePage() {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
   };
 
-  // Handle modal visibility
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
 
   const handleOk = () => {
     setIsModalVisible(false);
@@ -88,6 +81,8 @@ function HomePage() {
 
   return (
     <AppLayout>
+      {/* Header with transparent background until scroll */}
+      <HeaderComponent transparent={isHeaderTransparent} />
       {/* Full-screen video */}
       <FullScreenVideo>
         <video 
@@ -116,31 +111,7 @@ function HomePage() {
          </ScrollDownArrow>
         </ArrowContainer>
       </FullScreenVideo>
-
-      {/* Header with transparent background until scroll */}
-      <CustomHeader transparent={isHeaderTransparent}>
-        <LogoContainer>
-          <img src={isHeaderTransparent ? logoWhite : logo} alt="Logo"/>
-          <Link to="/"></Link>
-        </LogoContainer>
-
-        {/* Centered Menu */}
-        <MenuContainer
-          transparent={isHeaderTransparent}
-          theme="dark"
-          mode="horizontal"
-          items={[
-            { key: '1', label: <Link to="/about">About</Link> },
-            { key: '2', label: <Link to="/services">Portfolio</Link> },
-            { key: '3', label: <Link to="/contact">Team</Link> },
-          ]}
-        />
-
-        {/* Button on the right */}
-        <RightButton onClick={showModal}>Download</RightButton> {/* Trigger modal */}
-      </CustomHeader>
-
-           {/* Modal for QR Code */}
+        {/* Modal for QR Code */}
         <ModalContainer
           title="Scan to Access the Project"
           open={isModalVisible}
@@ -153,7 +124,7 @@ function HomePage() {
           </a>
         </ModalContainer>
         {/* Section 1: Problem */}
-      <SectionContainer reverse bgColor=""  ref={sectionRefs[0]} className={useIntersectionObserver(sectionRefs[0]) ? 'show' : ''}>
+      <SectionContainer centered={false} reverse bgColor=""  ref={sectionRefs[0]} className={useIntersectionObserver(sectionRefs[0]) ? 'show' : ''}>
         <SectionContent align='left'>
           <h2>The Problem</h2>
           <p>
@@ -169,7 +140,7 @@ function HomePage() {
       </SectionContainer>
 
       {/* Section 2: Solution */}
-      <SectionContainer reverse={false} bgColor="" ref={sectionRefs[1]} className={useIntersectionObserver(sectionRefs[1]) ? 'show' : ''}>
+      <SectionContainer centered={false} reverse={false} bgColor="" ref={sectionRefs[1]} className={useIntersectionObserver(sectionRefs[1]) ? 'show' : ''}>
         <SectionContent align="right">
           <h2>Our Solution</h2>
           <p>
@@ -182,27 +153,29 @@ function HomePage() {
       </SectionContainer>
 
       {/* Section 3: Story with Timeline */}
-      <SectionContainer reverse={false} bgColor="" ref={sectionRefs[2]} className={useIntersectionObserver(sectionRefs[2]) ? 'show' : ''}>
+      <SectionContainer  centered reverse={false} bgColor="" ref={sectionRefs[2]} className={useIntersectionObserver(sectionRefs[2]) ? 'show' : ''}>
         <SectionContent align="center">
-          <h2 style={{ color: colors.primaryGreen }}>Our Story</h2>
-          <ul style={{ listStyle: 'none', padding: '0', width: '60%', margin: 'auto' }}>
-            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2020</div>
-              <div>EcoGo was conceptualized as a solution to empower individuals to take control of their environmental impact.</div>
-            </li>
-            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2021</div>
-              <div>We launched the first version of the app, helping early adopters measure their carbon footprint.</div>
-            </li>
-            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2022</div>
-              <div>Expanded features to include personalized action plans for sustainable living.</div>
-            </li>
-            <li style={{ padding: '1rem 0', display: 'flex', alignItems: 'center' }}>
-              <div style={{ marginRight: '1rem', fontWeight: 'bold', color: colors.primaryGreen }}>2023</div>
-              <div>Our community reached 1 million users, each making a difference in their way.</div>
-            </li>
-          </ul>
+        <h2 style={{ color: colors.primaryGreen }}>Our Story</h2>
+
+          {/* Horizontal Timeline */}
+          <HorizontalTimeline>
+            <HorizontalTimeline.Item>
+              <h3 style={{ color: colors.primaryGreen }}>2020</h3>
+              <p>EcoGo was conceptualized as a solution to empower individuals to take control of their environmental impact.</p>
+            </HorizontalTimeline.Item>
+            <HorizontalTimeline.Item>
+              <h3 style={{ color: colors.primaryGreen }}>2021</h3>
+              <p>We launched the first version of the app, helping early adopters measure their carbon footprint.</p>
+            </HorizontalTimeline.Item>
+            <HorizontalTimeline.Item>
+              <h3 style={{ color: colors.primaryGreen }}>2022</h3>
+              <p>Expanded features to include personalized action plans for sustainable living.</p>
+            </HorizontalTimeline.Item>
+            <HorizontalTimeline.Item>
+              <h3 style={{ color: colors.primaryGreen }}>2023</h3>
+              <p>Our community reached 1 million users, each making a difference in their way.</p>
+            </HorizontalTimeline.Item>
+          </HorizontalTimeline>
         </SectionContent>
       </SectionContainer>
           

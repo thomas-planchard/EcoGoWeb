@@ -1,16 +1,13 @@
 // src/pages/HomePage.ts
 import styled from 'styled-components';
-import { Layout, Menu, Button, Modal } from 'antd';
+import { Modal, Timeline as AntTimeline } from 'antd';
 import colors from '../../constants/colors';
 
-
-interface TransparentProps {
-  transparent: boolean;
-}
 
 interface SectionProps {
   bgColor: string;
   reverse: boolean;
+  centered: boolean;
 }
 
 interface SectionContentProps {
@@ -20,10 +17,6 @@ interface SectionContentProps {
 interface SectionImageProps {
   height: string;
 }
-
-export const AppLayout = styled(Layout)`
-  background-color: ${colors.veryLightBrown};};
-`;
 
 
 // Styled component for the full-screen video
@@ -99,92 +92,6 @@ export const ScrollDownArrow = styled.div`
 
 
 
-export const CustomHeader = styled(Layout.Header).withConfig({
-  shouldForwardProp: (prop) => prop !== 'transparent',
-})<TransparentProps>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background-color 0.3s ease;
-  background-color: ${({ transparent }) => (transparent ? 'transparent' : 'white')};
-  border-bottom: ${({ transparent }) => (transparent ? 'none' : `1px solid ${colors.lightGray}`)};
-  padding: 3rem 6rem;
-`;
-
-export const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  img {
-    height: 7vh;
-  }
-`;
-
-
-
-export const MenuContainer = styled(Menu).withConfig({
-  shouldForwardProp: (prop) => prop !== 'transparent',
-})<TransparentProps>`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  background-color: transparent;
-  border: none;
-
-  .ant-menu-item {
-    padding: 0 1.3vw;
-    margin: 0 1.3vw;
-    font-size: 3vh;  
-    transition: color 0.3s ease; /* Smooth color transition */
-
-    a {
-      color: ${({ transparent }) => (transparent ? 'white' : colors.primaryGreen)}; /* Default color */
-    }
-
-    a:hover, a:focus {
-      color: ${({ transparent }) => (transparent ? 'white' : colors.primaryGreen)} ; /* Hover color */
-    }
-
-    a:active, a:visited {
-      color: ${({ transparent }) => (transparent ? 'white' : colors.primaryGreen)} ; /* Active/Visited color */
-    }
-  }
-
-  /* Hover state */
-  .ant-menu-item:hover {
-    border-bottom: 0.2vh solid ${({ transparent }) => (transparent ? 'white' : colors.primaryGreen)};  /* Bottom border on hover */
-  }
-
-  /* Selected (active) state */
-  .ant-menu-item-selected {
-    border-bottom: 0.2vh solid ${({ transparent }) => (transparent ? 'white' : colors.primaryGreen)};  /* Bottom border when selected */
-  }
-
-  /* Remove default underline effect */
-  .ant-menu-item::after {
-    content: none !important;
-  }
-`;
-
-export const RightButton = styled(Button)`
-  background-color: white;
-  color: black;
-  font-weight: bold;
-  border-radius: 1vw;
-
-
-   &:hover {
-    background-color: ${colors.softMint} !important;
-    color: white !important;
-    border-color: ${colors.softMint} !important;
-  }
-`;
-
 export const ModalContainer = styled(Modal)`
   .qrCodeContainer {
     width: 100%;
@@ -201,7 +108,7 @@ export const ModalContainer = styled(Modal)`
 
 // Base container for a section
 export const SectionContainer = styled.section.withConfig({
-  shouldForwardProp: (prop) => prop !== 'bgColor' && prop !== 'reverse' && prop !== 'delay',
+  shouldForwardProp: (prop) => prop !== 'bgColor' && prop !== 'reverse' && prop !== 'delay' && prop !== 'centered',
   })<SectionProps>`
   display: flex;
   padding: 5vh 2vw;
@@ -215,6 +122,14 @@ export const SectionContainer = styled.section.withConfig({
     transform: translateY(0);
     animation: slideUp 1s forwards;
   }
+
+  ${({ centered }) =>
+    centered &&
+    `
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  `}
 
   @keyframes slideUp {
     0% {
@@ -274,5 +189,44 @@ export const SectionImage = styled.div.withConfig({
 
   @media (max-width: 768px) {
     width: 100%;
+  }
+`;
+
+
+
+// Customize Ant Design's Timeline for horizontal layout
+export const HorizontalTimeline = styled(AntTimeline)`
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  overflow-x: auto;
+
+  .ant-timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    min-width: 200px; /* Control the minimum size of each item */
+
+    /* Styling for the circle (dot) */
+    .ant-timeline-item-head {
+      background-color: ${colors.primaryGreen} !important;
+      border-color: ${colors.primaryGreen} !important;
+    }
+
+    /* Styling for content text */
+    .ant-timeline-item-content {
+      font-size: 1.2rem;
+      color: ${colors.darkGrey};
+      text-align: center;
+    }
+  }
+
+  /* Customize the line between dots */
+  .ant-timeline-item-tail {
+    height: 2px;
+    background-color: ${colors.primaryGreen};
   }
 `;

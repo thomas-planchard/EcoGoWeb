@@ -1,7 +1,7 @@
 // src/App.jsx
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage.tsx';
-import About from './pages/About';
+import About from './pages/About/About.tsx';
 import Contact from './pages/Contact';
 import './App.css';
 
