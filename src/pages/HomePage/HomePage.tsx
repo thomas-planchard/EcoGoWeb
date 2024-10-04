@@ -5,6 +5,10 @@ import Qrcode from '../../assets/qrCode.svg';
 import firstSection from '../../assets/globalWarming.jpg';
 import secondSection from '../../assets/ecosystem.jpg';
 import HeaderComponent from '../../components/Header.tsx';
+import hammerAndWrench from '../../assets/hammer.png';
+import iphone from '../../assets/iphone.png';
+import newFeatures from '../../assets/newFeatures.png';
+import rocket from '../../assets/rocket.png';
 import {AppLayout} from '../../GlobalStyle.ts';
 
 import {
@@ -154,28 +158,36 @@ function HomePage() {
 
       {/* Section 3: Story with Timeline */}
       <SectionContainer  centered reverse={false} bgColor="" ref={sectionRefs[2]} className={useIntersectionObserver(sectionRefs[2]) ? 'show' : ''}>
-        <SectionContent align="center">
+        <SectionContent align="center" style={{width: '100%'}}>
         <h2 style={{ color: colors.primaryGreen }}>Our Story</h2>
 
-          {/* Horizontal Timeline */}
-          <HorizontalTimeline>
-            <HorizontalTimeline.Item>
-              <h3 style={{ color: colors.primaryGreen }}>2020</h3>
-              <p>EcoGo was conceptualized as a solution to empower individuals to take control of their environmental impact.</p>
+         {/* Horizontal Timeline */}
+         <HorizontalTimeline>
+            <HorizontalTimeline.Item dot={null}>
+              <img src={hammerAndWrench} alt="Placeholder Logo 2" />
+              <h3>May 2024</h3>
+              <p>First prototype of the app with the initial system for carbon footprint calculation.</p>
             </HorizontalTimeline.Item>
-            <HorizontalTimeline.Item>
-              <h3 style={{ color: colors.primaryGreen }}>2021</h3>
-              <p>We launched the first version of the app, helping early adopters measure their carbon footprint.</p>
+
+            <HorizontalTimeline.Item dot={null}>
+              <img src={iphone} alt="Placeholder Logo 3" />
+              <h3>Sep 2024</h3>
+              <p>First release of the app to users.</p>
             </HorizontalTimeline.Item>
-            <HorizontalTimeline.Item>
-              <h3 style={{ color: colors.primaryGreen }}>2022</h3>
-              <p>Expanded features to include personalized action plans for sustainable living.</p>
+
+            <HorizontalTimeline.Item dot={null}>
+              <img src={newFeatures} alt="Placeholder Logo 4"  />
+              <h3>Jan 2025</h3>
+              <p>Added new features: track food and vehicle information based on car ID.</p>
             </HorizontalTimeline.Item>
-            <HorizontalTimeline.Item>
-              <h3 style={{ color: colors.primaryGreen }}>2023</h3>
-              <p>Our community reached 1 million users, each making a difference in their way.</p>
+
+            <HorizontalTimeline.Item dot={null}>
+              <img src={rocket} alt="Placeholder Logo 5"  />
+              <h3>Sep 2025</h3>
+              <p>Release of version 2 with improved features and performance.</p>
             </HorizontalTimeline.Item>
           </HorizontalTimeline>
+
         </SectionContent>
       </SectionContainer>
           

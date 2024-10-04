@@ -193,40 +193,61 @@ export const SectionImage = styled.div.withConfig({
 `;
 
 
-
-// Customize Ant Design's Timeline for horizontal layout
 export const HorizontalTimeline = styled(AntTimeline)`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  margin-top: 10vh;
   width: 100%;
-  overflow-x: auto;
 
   .ant-timeline-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    min-width: 200px; /* Control the minimum size of each item */
+    min-width: 6vw;
 
-    /* Styling for the circle (dot) */
+    h3 {
+      margin-top: 2vh;
+      font-size: 3vh;
+      color: ${colors.darkGrey};
+    }
+
+    p {
+      font-size: 2vh;
+      color: ${colors.lightGray};
+      text-align: center;
+    }
+
+    img {
+      width: 9vh;  
+      height: auto;
+      margin-bottom: 2vh;
+    }
+
     .ant-timeline-item-head {
       background-color: ${colors.primaryGreen} !important;
       border-color: ${colors.primaryGreen} !important;
     }
 
-    /* Styling for content text */
-    .ant-timeline-item-content {
-      font-size: 1.2rem;
-      color: ${colors.darkGrey};
-      text-align: center;
+    /* Hide the green dot */
+    .ant-timeline-item-head {
+      display: none;
     }
   }
 
-  /* Customize the line between dots */
+  /* Line between the timeline items */
   .ant-timeline-item-tail {
-    height: 2px;
+    height: 0px;
     background-color: ${colors.primaryGreen};
+  }
+
+  /* For responsive design on smaller screens */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    .ant-timeline-item {
+      min-width: 100%;
+    }
   }
 `;
