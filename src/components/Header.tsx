@@ -14,9 +14,10 @@ import {
 
 interface HeaderComponentProps {
   transparent: boolean;
+  onOpenModal?: () => void;
 }
 
-const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent }) => {
+const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent, onOpenModal }) => {
   // Define the menu items
   const menuItems: MenuProps['items'] = [
     { key: '1', label: <Link to="/about">About</Link> },
@@ -28,7 +29,9 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent }) => {
     <CustomHeader transparent={transparent}>
       {/* Logo */}
       <LogoContainer>
+        <Link to="/">
         <img src={transparent ? logoWhite : logo} alt="Logo" />
+        </Link>
       </LogoContainer>
 
       {/* Centered Menu */}
@@ -40,7 +43,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent }) => {
       />
 
       {/* Right Button */}
-      <RightButton>Download</RightButton>
+      <RightButton onClick={onOpenModal}>Download</RightButton>
     </CustomHeader>
   );
 };

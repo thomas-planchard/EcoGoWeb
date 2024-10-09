@@ -4,6 +4,7 @@ import { Modal, Timeline as AntTimeline } from 'antd';
 import colors from '../../constants/colors';
 
 
+
 interface SectionProps {
   bgColor: string;
   reverse: boolean;
@@ -17,6 +18,7 @@ interface SectionContentProps {
 interface SectionImageProps {
   height: string;
 }
+
 
 
 // Styled component for the full-screen video
@@ -112,10 +114,10 @@ export const SectionContainer = styled.section.withConfig({
   })<SectionProps>`
   display: flex;
   padding: 5vh 2vw;
-  background-color: ${({ bgColor }) => bgColor || colors.veryLightBrown}; /* Optional background color */
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')}; /* Handle reverse layout */
   opacity: 0; /* Initially hidden */
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  
 
   &.show {
     opacity: 1;
@@ -249,5 +251,30 @@ export const HorizontalTimeline = styled(AntTimeline)`
     .ant-timeline-item {
       min-width: 100%;
     }
+  }
+`;
+
+
+export const LeafContainer = styled.div`
+  position: absolute; 
+  top: 100vh;
+  left: 0;
+  width: 100vw;
+  height: 250vh;
+  z-index: 0; 
+  overflow: hidden;
+  opacity: 0.1;
+
+  @keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    animation: float 6s ease-in-out infinite;
   }
 `;

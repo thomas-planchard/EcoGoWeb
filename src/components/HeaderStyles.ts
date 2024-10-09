@@ -27,6 +27,11 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
 
+  a {
+    display: flex;
+    align-items: center;
+  }
+
   img {
     height: 7vh;
   }
@@ -73,11 +78,6 @@ export const MenuContainer = styled(Menu)<TransparentProps>`
       transform: scaleX(1);
     }
   }
-
-  
-
-
-
   .ant-menu-item::after {
     content: none !important;
   }

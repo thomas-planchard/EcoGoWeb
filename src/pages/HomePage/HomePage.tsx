@@ -5,11 +5,13 @@ import Qrcode from '../../assets/qrCode.svg';
 import firstSection from '../../assets/globalWarming.jpg';
 import secondSection from '../../assets/ecosystem.jpg';
 import HeaderComponent from '../../components/Header.tsx';
+import FooterComponent from '../../components/Footer.tsx';
 import hammerAndWrench from '../../assets/hammer.png';
 import iphone from '../../assets/iphone.png';
 import newFeatures from '../../assets/newFeatures.png';
 import rocket from '../../assets/rocket.png';
 import {AppLayout} from '../../GlobalStyle.ts';
+import leaf from '../../assets/leaf.svg';
 
 import {
   FullScreenVideo,
@@ -21,6 +23,7 @@ import {
   SectionContent,
   SectionImage,
   HorizontalTimeline,
+  LeafContainer,
 } from './HomePage.ts';
 
 
@@ -58,6 +61,10 @@ function HomePage() {
     setIsModalVisible(false);
   };
 
+  const openModal = () => {
+    setIsModalVisible(true);
+  };
+
     // IntersectionObserver hook
     const useIntersectionObserver = (elementRef: React.RefObject<HTMLElement>) => {
       const [isVisible, setIsVisible] = useState(false);
@@ -86,7 +93,7 @@ function HomePage() {
   return (
     <AppLayout>
       {/* Header with transparent background until scroll */}
-      <HeaderComponent transparent={isHeaderTransparent} />
+      <HeaderComponent transparent={isHeaderTransparent} onOpenModal={openModal}/>
       {/* Full-screen video */}
       <FullScreenVideo>
         <video 
@@ -128,6 +135,9 @@ function HomePage() {
           </a>
         </ModalContainer>
         {/* Section 1: Problem */}
+      <LeafContainer>
+        <img src={leaf} alt="Leaf" />
+      </LeafContainer>
       <SectionContainer centered={false} reverse bgColor=""  ref={sectionRefs[0]} className={useIntersectionObserver(sectionRefs[0]) ? 'show' : ''}>
         <SectionContent align='left'>
           <h2>The Problem</h2>
@@ -139,10 +149,9 @@ function HomePage() {
           </p>
         </SectionContent>
         <SectionImage height='80%'>
-          <img src={firstSection} alt="Problem" />
+          <img src={firstSection} alt="Problem" style={{zIndex:0}}/>
         </SectionImage>
       </SectionContainer>
-
       {/* Section 2: Solution */}
       <SectionContainer centered={false} reverse={false} bgColor="" ref={sectionRefs[1]} className={useIntersectionObserver(sectionRefs[1]) ? 'show' : ''}>
         <SectionContent align="right">
@@ -190,7 +199,8 @@ function HomePage() {
 
         </SectionContent>
       </SectionContainer>
-          
+      {/* Footer */}
+      <FooterComponent />
     </AppLayout>
   );
 }
