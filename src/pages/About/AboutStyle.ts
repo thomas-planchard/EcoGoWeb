@@ -13,7 +13,7 @@ const HeroSection = styled.section`
   margin-top: 4rem;
 
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
   }
 
@@ -58,7 +58,7 @@ const GalleryItem = styled.div`
 
   img {
     width: 100%;
-    height: autp;
+    height: auto;
     object-fit: cover;
     margin-bottom: 1rem;
   }
@@ -98,11 +98,12 @@ const FeatureItem = styled.div<{ reverse?: boolean }>`
   }
 `;
 
+
+
 const FeatureImage = styled.img`
   flex: 1;
-  max-width: 400px;
+  max-width: 30vw;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 `;
 
 const FeatureText = styled.div`
@@ -115,7 +116,8 @@ const FeatureText = styled.div`
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    width: 60%; 
     color: #666;
     line-height: 1.6;
   }
@@ -124,18 +126,30 @@ const FeatureText = styled.div`
 const LastSection = styled.section`
   text-align: center;
   padding: 2rem 0;
+  display flex;
+  flex-direction: column;
+  align-items: center;
+
 
   img {
     width: 50%;
     height: auto;
     margin-bottom: 1rem;
+  
+
   }
 
   p {
     font-size: 1.25rem;
+    width: 50%;
     color: #666;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 `;
+
+
+
 
 
 

@@ -1,43 +1,52 @@
-import React, { useRef, useEffect } from 'react';
+import React ,{ useRef, useEffect } from 'react';
 import HeaderComponent from '../../components/Header';
 import { AppLayout } from '../../GlobalStyle';
 import image3D1 from '../../assets/3dmodel1.svg';
 import image3D2 from '../../assets/3dmodel2.svg';
 import image3D3 from '../../assets/3dmodel3.svg';
-import image3D4 from '../../assets/3dmodel4.svg';
 import image3D5 from '../../assets/3dmodel5.svg';
 import image3D6 from '../../assets/3dmodel6.svg';
 import image3D7 from '../../assets/3dmodel7.svg';
+import image3D8 from '../../assets/3dmodel8.svg';
 import { HeroSection, HorizontalGallery, GalleryItem, Description, FeaturesSection, FeatureItem, FeatureImage, FeatureText, LastSection } from './AboutStyle';
 import FooterComponent from '../../components/Footer';
 
 const AboutPage = () => {
 
-  const galleryRef = useRef<HTMLDivElement>(null);
+  const firstGalleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const gallery = galleryRef.current;
+    const gallery = firstGalleryRef.current;
     if (!gallery) return;
   
+    const speed = 1.5;  // Increase speed for visibility
+    let requestId: number;
+  
     const scrollWidth = gallery.scrollWidth;  // Get the scroll width
-    let start: number;
-    const speed = 0.5;  // Speed of the scroll
   
     const scroll = () => {
-      // If gallery scrollLeft exceeds half the scrollWidth (since we duplicate content)
+  
+      // Reset scroll when it reaches the halfway point
       if (gallery.scrollLeft >= scrollWidth / 2) {
-        gallery.scrollLeft = 0;  // Reset to the start
+        gallery.scrollLeft = 0;  // Reset to start
       }
-      
-      gallery.scrollLeft += speed;  // Move the scroll
-      console.log(gallery.scrollLeft);  
-      start = requestAnimationFrame(scroll);  // Continue the animation
+
+    
+  
+      // Move the scroll
+      gallery.scrollLeft += speed;
+
+      // Recursive call to requestAnimationFrame
+      requestId = requestAnimationFrame(scroll);
     };
   
-    start = requestAnimationFrame(scroll);  // Start scrolling
+    // Start the scrolling
+    requestId = requestAnimationFrame(scroll);
   
-    return () => cancelAnimationFrame(start);  // Clean up on component unmount
+    // Cleanup the animation frame on component unmount
+    return () => cancelAnimationFrame(requestId);
   }, []);
+
 
   
   return (
@@ -48,7 +57,7 @@ const AboutPage = () => {
         <p>Meet your future assistant for tracking your carbon footprint</p>
       </HeroSection>
 
-      <HorizontalGallery ref={galleryRef}>
+      <HorizontalGallery ref={firstGalleryRef}>
       {[...Array(2)].map((_, idx) => (
         <React.Fragment key={idx}>
           <GalleryItem>
@@ -88,20 +97,21 @@ const AboutPage = () => {
           <FeatureImage src={image3D3} alt="Feature 1" />
           <FeatureText>
             <h2>Detailed Analytics</h2>
-            <p>Analyze your data in depth to make better decisions.</p>
+            <p>The app lets you choose between four transportation modes: walking, cycling, driving, and public transport. For each mode, it calculates the carbon footprint you’ll emit, helping you easily compare the environmental impact of your choices.</p>
           </FeatureText>
         </FeatureItem>
-        <FeatureItem reverse>
-          <FeatureImage src={image3D4} alt="Feature 2" />
+        <FeatureItem reverse={true}>
+          <FeatureImage src={image3D8} alt="Feature 2" />
           <FeatureText>
-            <h2>Seamless Integration</h2>
-            <p>Integrate effortlessly with your daily workflow.</p>
+            <h2>Automatic Detection</h2>
+            <p>The app automatically detects your activity—whether you’re walking, cycling, driving, or using public transport—and records your carbon emissions without needing you to manually input data. Your transportation modes are tracked and added to your account seamlessly.</p>
           </FeatureText>
         </FeatureItem>
       </FeaturesSection>
+      
       <LastSection>
         <img src={image3D5} alt="Last Section Image" />
-        <p>This is the last section with a picture in the middle and text below it.</p>
+        <p>A comprehensive solution to help you track your carbon footprint during your daily commutes. By making you aware of your actual emissions, the app empowers you to make informed and eco-conscious decisions in your everyday travel.</p>
       </LastSection>
       <FooterComponent />
     </AppLayout>

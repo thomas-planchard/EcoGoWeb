@@ -21,7 +21,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent, onOpenMo
   // Define the menu items
   const menuItems: MenuProps['items'] = [
     { key: '1', label: <Link to="/about">About</Link> },
-    { key: '2', label: <Link to="/services">Portfolio</Link> },
+    { key: '2', label: <Link to="/portfolio">Portfolio</Link> },
     { key: '3', label: <Link to="/contact">Team</Link> },
   ];
 
