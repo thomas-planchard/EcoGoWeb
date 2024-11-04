@@ -120,12 +120,9 @@ export const SocialIcons = styled.div`
 
 export const FooterBottom = styled.div`
   text-align: center;
-  padding-top: 1rem;
   border-top: 1px solid #eaeaea;
-  
+  height: 1vh;
   p {
-    margin: 0.5rem 0;
-
     a {
       color: #333;
       text-decoration: none;
