@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import  colors  from '../../constants/colors';
+import colors from '../../constants/colors';
 import { Link } from 'react-router-dom';
-
-
 
 const PortfolioSection = styled.section`
   padding: 5rem 2rem;
@@ -11,7 +9,7 @@ const PortfolioSection = styled.section`
 
 const PortfolioTitle = styled.h1`
   font-size: 3rem;
-  color: ${colors.darkGrey};
+  color: black;
   margin-bottom: 3rem;
 `;
 
@@ -21,6 +19,14 @@ const PortfolioGrid = styled.div`
   gap: 3rem; /* Space between cards */
   max-width: 1200px;
   margin: 0 auto;
+`;
+
+const ReadMore = styled.span`
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: color 0.3s ease;
+
 `;
 
 const PortfolioCard = styled(Link)`
@@ -37,21 +43,28 @@ const PortfolioCard = styled(Link)`
   &:hover {
     transform: translateY(-5px); /* Slight lift on hover */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+    ${ReadMore} {
+      color: ${colors.primaryGreen};
+    }
   }
 `;
 
 const ImageContainer = styled.div`
   position: relative;
-  padding-top: 60%; /* Aspect ratio for the image container */
+  width: 100%;
+  height: 0;
+  padding-bottom: 60%; /* Aspect ratio for the image container */
+  overflow: hidden;
   border-radius: 12px 12px 0 0; /* Rounded corners at the top */
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
     border-radius: inherit;
   }
 `;
@@ -67,21 +80,11 @@ const ProjectTitle = styled.h2`
 `;
 
 const ProjectDescription = styled.p`
-  color: ${colors.grey};
+  color: grey;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 `;
 
-const ReadMore = styled.span`
-  font-weight: bold;
-  color: ${colors.primary};
-  font-size: 1.1rem;
-  display: inline-block;
-  transition: color 0.3s ease;
 
-  &:hover {
-    color: ${colors.primaryDark};
-  }
-`;
 
 export { PortfolioSection, PortfolioTitle, PortfolioGrid, PortfolioCard, ImageContainer, CardText, ProjectTitle, ProjectDescription, ReadMore };

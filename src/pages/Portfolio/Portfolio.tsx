@@ -4,13 +4,13 @@ import { PortfolioSection, PortfolioTitle, PortfolioGrid, PortfolioCard, ImageCo
 import HeaderComponent from '../../components/Header';
 import { AppLayout } from '../../GlobalStyle';
 import FooterComponent from '../../components/Footer';
-import projectData from '../../data/projects.json';
+import projects from '../../data/projects';
 
 function PortfolioPage() {
-  const [projects, setProjects] = useState<{ id: string; title: string; description: string; image: string; link: string; }[]>([]);
+  const [projectsData, setProjectsData] = useState<{ id: string; title: string; description: string; image: string; link: string; }[]>([]);
 
   useEffect(() => {
-    setProjects(projectData);
+    setProjectsData(projects);
   }, []);
 
   return (
@@ -19,14 +19,14 @@ function PortfolioPage() {
       <PortfolioSection>
         <PortfolioTitle>Portfolio</PortfolioTitle>
         <PortfolioGrid>
-          {projects.map((project) => (
-            <PortfolioCard key={project.id} to={project.link}>
+          {projectsData.map((projectsData) => (
+            <PortfolioCard key={projectsData.id} to={projectsData.link}>
               <ImageContainer>
-                <img src={(`../../assets/${project.image}`)} alt={project.title} />
+              <img src={projectsData.image} alt={projectsData.title} />
               </ImageContainer>
               <CardText>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectDescription>{project.description}</ProjectDescription>
+                <ProjectTitle>{projectsData.title}</ProjectTitle>
+                <ProjectDescription>{projectsData.description}</ProjectDescription>
                 <ReadMore>Read case study &rarr;</ReadMore>
               </CardText>
             </PortfolioCard>
