@@ -1,13 +1,13 @@
 import React ,{ useRef, useEffect } from 'react';
 import HeaderComponent from '../../components/Header';
 import { AppLayout } from '../../GlobalStyle';
-import image3D1 from '../../assets/3dmodel1.svg';
-import image3D2 from '../../assets/3dmodel2.svg';
-import image3D3 from '../../assets/3dmodel3.svg';
-import image3D5 from '../../assets/3dmodel5.svg';
-import image3D6 from '../../assets/3dmodel6.svg';
-import image3D7 from '../../assets/3dmodel7.svg';
-import image3D8 from '../../assets/3dmodel8.svg';
+import image3D1 from '../../assets/3dmodels/3dmodel1.svg';
+import image3D2 from '../../assets/3dmodels/3dmodel2.svg';
+import image3D3 from '../../assets/3dmodels/3dmodel3.svg';
+import image3D5 from '../../assets/3dmodels/3dmodel5.svg';
+import image3D6 from '../../assets/3dmodels/3dmodel6.svg';
+import image3D7 from '../../assets/3dmodels/3dmodel7.svg';
+import image3D8 from '../../assets/3dmodels/3dmodel8.svg';
 import { HeroSection, HorizontalGallery, GalleryItem, Description, FeaturesSection, FeatureItem, FeatureImage, FeatureText, LastSection } from './AboutStyle';
 import FooterComponent from '../../components/Footer';
 

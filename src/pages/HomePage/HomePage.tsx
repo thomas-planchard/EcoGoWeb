@@ -6,10 +6,10 @@ import firstSection from '../../assets/globalWarming.jpg';
 import secondSection from '../../assets/ecosystem.jpg';
 import HeaderComponent from '../../components/Header.tsx';
 import FooterComponent from '../../components/Footer.tsx';
-import hammerAndWrench from '../../assets/hammer.png';
-import iphone from '../../assets/iphone.png';
-import newFeatures from '../../assets/newFeatures.png';
-import rocket from '../../assets/rocket.png';
+import hammerAndWrench from '../../assets/icons/hammer.png';
+import iphone from '../../assets/icons/iphone.png';
+import newFeatures from '../../assets/icons/newFeatures.png';
+import rocket from '../../assets/icons/rocket.png';
 import {AppLayout} from '../../GlobalStyle.ts';
 import leaf from '../../assets/leaf.svg';
 

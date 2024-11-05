@@ -1,11 +1,11 @@
-import projectOneImage from '../assets/adopte1candidat.webp';
-import projectTwoImage from '../assets/virtualProcessor.png';
-import projectThreeImage from '../assets/fpga.jpeg';
-import projectFourImage from '../assets/assembly.jpg';
-import projectFiveImage from '../assets/wineMixer.jpg';
-import projectSixImage from '../assets/unrealEngine.jpg';
-import projectSevenImage from '../assets/screenManagement.jpg';
-import projectEightImage from '../assets/aiRecognizing.jpg';
+import projectOneImage from '../assets/projects/adopte1candidat.webp';
+import projectTwoImage from '../assets/projects/virtualProcessor.png';
+import projectThreeImage from '../assets/projects/fpga.jpeg';
+import projectFourImage from '../assets/projects/assembly.jpg';
+import projectFiveImage from '../assets/projects/wineMixer.jpg';
+import projectSixImage from '../assets/projects/unrealEngine.jpg';
+import projectSevenImage from '../assets/projects/screenManagement.jpg';
+import projectEightImage from '../assets/projects/aiRecognizing.jpg';
 
 const projects = [
     {
