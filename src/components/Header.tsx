@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 import logo from '../assets/logo.webp';
 import logoWhite from '../assets/logoWhite.webp';
-import { MenuProps } from 'antd';
 import Qrcode from '../assets/qrCode.svg';
-
+import { MenuItemType } from 'antd/es/menu/interface';
 import {
   CustomHeader,
   LogoContainer,
@@ -20,6 +19,7 @@ import {
 } from './HeaderStyles.ts';
 
 
+
 interface HeaderComponentProps {
   transparent: boolean;
 }
@@ -31,10 +31,10 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // Define the menu items
-  const menuItems: MenuProps['items'] = [
-    { key: '1', label: <DrawerLink to="/about">About</DrawerLink> },
-    { key: '2', label: <DrawerLink to="/portfolio">Portfolio</DrawerLink> },
-    { key: '3', label: <DrawerLink to="/contact">Team</DrawerLink> },
+  const menuItems: MenuItemType[] = [
+    { key: '1', label: "About" },
+    { key: '2', label: "Portfolio"},
+    { key: '3', label: "Team" },
   ];
 
   // Toggle drawer visibility
