@@ -1,6 +1,6 @@
 // src/pages/HomePage.ts
 import styled from 'styled-components';
-import { Modal, Timeline as AntTimeline } from 'antd';
+import {Timeline as AntTimeline } from 'antd';
 import colors from '../../constants/colors';
 
 
@@ -92,20 +92,6 @@ export const ScrollDownArrow = styled.div`
   }
 `;
 
-
-
-export const ModalContainer = styled(Modal)`
-  .qrCodeContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  img {
-    width: 60%;
-  }
-`;
 
 
 // Base container for a section

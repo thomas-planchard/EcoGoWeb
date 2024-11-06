@@ -9,6 +9,11 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
 `;
 
 const HeaderSection = styled.section`
@@ -16,17 +21,39 @@ const HeaderSection = styled.section`
   margin-top: 2.5rem;
   text-align: left;
   padding: 2.5rem 0;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 4rem;
   color: ${colors.primaryGreen};
   margin-bottom: 0.625rem;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 const Subtitle = styled.p`
   font-size: 1.2rem;
   color: #888;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const InfoGrid = styled.div`
@@ -35,6 +62,14 @@ const InfoGrid = styled.div`
   gap: 6.25rem;
   text-align: left;
   margin: 2.5rem 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const InfoItem = styled.div`
@@ -57,8 +92,21 @@ const InfoItem = styled.div`
   }
 
   & > a {
-    color: #666;
+    color: ${colors.primaryGreen};
     text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+    text-align: center;
+
+    & > h3 {
+      font-size: 1rem;
+    }
+
+    & > p, & > a {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -71,6 +119,13 @@ const ImageSection = styled.div`
     max-width: 70%;
     border-radius: 0.5rem;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    & > img {
+      max-width: 90%;
+    }
+  }
 `;
 
 const SectionWrapper = styled.div`
@@ -80,13 +135,30 @@ const SectionWrapper = styled.div`
   max-width: 70%;
   margin-top: 3rem;
   border-bottom: 1px solid #e0e0e0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 3rem 0;
+    width: 90%;
+    max-width: 100%;
+  }
 `;
 
 const SectionTitle = styled.h2`
-  flex: 0 0 40%; /* Left column width */
+  flex: 0 0 40%;
   font-size: 2.5rem;
   color: ${colors.primaryGreen};
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const SectionContent = styled.div`
@@ -94,15 +166,27 @@ const SectionContent = styled.div`
   font-size: 1.1rem;
   line-height: 1.6;
   word-wrap: break-word;
-  
   color: #666;
-`;
 
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 100%;
+    text-align: justify;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+`;
 
 const SectionImage = styled.img`
   max-width: 100%;
   margin-top: 1.5rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;
 
 export {

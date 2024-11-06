@@ -54,7 +54,7 @@ function FooterComponent() {
         <ContactSection>
           <h4>Contact Me</h4>
           <p>Email: <a href="mailto:thomas.planchard@icloud.com">thomas.planchard@icloud.com</a></p>
-          <p>Phone: <a href="tel:0610848255"></a>06 10 84 82 55</p>
+          <p>Phone: <a href="tel:+33610848255">06 10 84 82 55</a></p>
         </ContactSection>
       </FooterTop>
 

@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import colors from '../../constants/colors.ts';
 import promoVideo from '../../assets/video.mp4';
-import Qrcode from '../../assets/qrCode.svg';
 import firstSection from '../../assets/globalWarming.jpg';
 import secondSection from '../../assets/ecosystem.jpg';
 import HeaderComponent from '../../components/Header.tsx';
@@ -18,7 +17,6 @@ import {
   TextOverlay,
   ArrowContainer,
   ScrollDownArrow,
-  ModalContainer,
   SectionContainer,
   SectionContent,
   SectionImage,
@@ -31,7 +29,6 @@ import {
 
 function HomePage() {
   const [isHeaderTransparent, setIsHeaderTransparent] = useState(true);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleScroll = () => {
     if (window.scrollY > 300) {
@@ -53,17 +50,6 @@ function HomePage() {
   };
 
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  const openModal = () => {
-    setIsModalVisible(true);
-  };
 
     // IntersectionObserver hook
     const useIntersectionObserver = (elementRef: React.RefObject<HTMLElement>) => {
@@ -93,7 +79,7 @@ function HomePage() {
   return (
     <AppLayout>
       {/* Header with transparent background until scroll */}
-      <HeaderComponent transparent={isHeaderTransparent} onOpenModal={openModal}/>
+      <HeaderComponent transparent={isHeaderTransparent}/>
       {/* Full-screen video */}
       <FullScreenVideo>
         <video 
@@ -122,18 +108,7 @@ function HomePage() {
          </ScrollDownArrow>
         </ArrowContainer>
       </FullScreenVideo>
-        {/* Modal for QR Code */}
-        <ModalContainer
-          title="Scan to Access the Project"
-          open={isModalVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          footer={null} 
-        >
-          <a className="qrCodeContainer" href="https://github.com/thomas-planchard/moonshotProject"rel="nofollow">
-          <img src={Qrcode}></img>
-          </a>
-        </ModalContainer>
+
         {/* Section 1: Problem */}
       <LeafContainer>
         <img src={leaf} alt="Leaf" />
