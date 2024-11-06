@@ -7,7 +7,7 @@ export const FooterContainer = styled.footer`
   padding: 2rem 3rem;
 
   @media (max-width: 768px) {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
   }
 `;
 
@@ -28,6 +28,10 @@ export const FooterTop = styled.div`
 export const LogoSection = styled.div`
   flex: 1;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
   img {
     width: 15vh;
@@ -45,6 +49,9 @@ export const LogoSection = styled.div`
 export const PagesSection = styled.div`
   flex: 1;
   margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h4 {
     margin-bottom: 1rem;
@@ -54,9 +61,12 @@ export const PagesSection = styled.div`
   ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     li {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
 
       a {
         text-decoration: none;
@@ -86,6 +96,9 @@ export const PagesSection = styled.div`
 
 export const UtilitySection = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h4 {
     margin-bottom: 1rem;
@@ -95,9 +108,12 @@ export const UtilitySection = styled.div`
   ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     li {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
 
       a {
         text-decoration: none;
@@ -125,6 +141,9 @@ export const UtilitySection = styled.div`
 export const ContactSection = styled.div`
   flex: 1;
   margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h4 {
     margin-bottom: 1rem;
@@ -133,7 +152,7 @@ export const ContactSection = styled.div`
 
   p {
     font-size: 2vh;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
     a {
       text-decoration: none;
@@ -161,14 +180,16 @@ export const ContactSection = styled.div`
 
 export const SocialIcons = styled.div`
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 
   a {
-    margin-right: 1rem;
     font-size: 1.2rem;
     color: #333;
 
     &:hover {
-      color: #50fa7b;
+      color: ${colors.primaryGreen};
     }
   }
 
@@ -188,6 +209,7 @@ export const FooterBottom = styled.div`
 
   p {
     margin: 0.5rem 0;
+    font-size: 1.5vh;
 
     a {
       color: #333;

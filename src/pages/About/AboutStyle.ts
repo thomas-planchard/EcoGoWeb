@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-
-
 const HeroSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -22,6 +20,18 @@ const HeroSection = styled.section`
     color: #666;
     max-width: 600px;
   }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const HorizontalGallery = styled.div`
@@ -31,7 +41,7 @@ const HorizontalGallery = styled.div`
   gap: 2rem;
   white-space: nowrap;
 
-& > * {
+  & > * {
     display: inline-block; 
   }
 
@@ -39,9 +49,10 @@ const HorizontalGallery = styled.div`
     display: none;
   }
 
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
-
-
 
 const GalleryItem = styled.div`
   min-width: 20vw;
@@ -62,21 +73,33 @@ const GalleryItem = styled.div`
     object-fit: cover;
     margin-bottom: 1rem;
   }
+
+  @media (max-width: 768px) {
+    min-width: 50vw;
+  }
 `;
 
 const Description = styled.div`
-    padding: 1rem;
-
+  padding: 1rem;
 
   h2 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    
   }
 
   p {
     font-size: 1rem;
     color: #666;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -85,6 +108,11 @@ const FeaturesSection = styled.section`
   flex-direction: column;
   gap: 4rem;
   padding: 4rem 2rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
 `;
 
 const FeatureItem = styled.div<{ reverse?: boolean }>`
@@ -95,15 +123,18 @@ const FeatureItem = styled.div<{ reverse?: boolean }>`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 1rem;
   }
 `;
-
-
 
 const FeatureImage = styled.img`
   flex: 1;
   max-width: 30vw;
   border-radius: 12px;
+
+  @media (max-width: 768px) {
+    max-width: 70vw;
+  }
 `;
 
 const FeatureText = styled.div`
@@ -121,22 +152,30 @@ const FeatureText = styled.div`
     color: #666;
     line-height: 1.6;
   }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      width: 100%;
+    }
+  }
 `;
 
 const LastSection = styled.section`
   text-align: center;
   padding: 2rem 0;
-  display flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-
 
   img {
     width: 50%;
     height: auto;
     margin-bottom: 1rem;
-  
-
   }
 
   p {
@@ -146,12 +185,17 @@ const LastSection = styled.section`
     margin: 0 auto;
     line-height: 1.6;
   }
+
+  @media (max-width: 768px) {
+    img {
+      width: 80%;
+    }
+
+    p {
+      font-size: 1rem;
+      width: 90%;
+    }
+  }
 `;
-
-
-
-
-
-
 
 export { HeroSection, HorizontalGallery, GalleryItem, Description, FeaturesSection, FeatureItem, FeatureImage, FeatureText, LastSection };

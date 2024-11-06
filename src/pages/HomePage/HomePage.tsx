@@ -23,12 +23,14 @@ import {
   HorizontalTimeline,
   LeafContainer,
 } from './HomePage.ts';
+import { useIsMobile } from '../../hook/isMobile.tsx';
 
 
 
 
 function HomePage() {
   const [isHeaderTransparent, setIsHeaderTransparent] = useState(true);
+  const isMobile = useIsMobile();
 
   const handleScroll = () => {
     if (window.scrollY > 300) {
@@ -76,108 +78,121 @@ function HomePage() {
     const sectionRefs = [useRef(null), useRef(null), useRef(null)];
   
 
-  return (
-    <AppLayout>
-      {/* Header with transparent background until scroll */}
-      <HeaderComponent transparent={isHeaderTransparent}/>
-      {/* Full-screen video */}
-      <FullScreenVideo>
-        <video 
-          autoPlay 
-          muted 
-          loop
-          playsInline  // Prevents fullscreen on iOS Safari
-          disablePictureInPicture  // Disable picture-in-picture mode on mobile
-          onContextMenu={(e) => e.preventDefault()}  // Prevent right-click context menu
-          style={{ pointerEvents: 'none' }}  // Prevent interaction on the video
+    return (
+      <AppLayout>
+        <HeaderComponent transparent={isHeaderTransparent} />
+  
+        {/* Full-screen video, adjusted for mobile if needed */}
+        <FullScreenVideo>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            disablePictureInPicture
+            onContextMenu={(e) => e.preventDefault()}
+            style={{ pointerEvents: 'none' }}
           >
-          <source src={promoVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        {/* Text Overlay on top of the video */}
-        <TextOverlay>
-          <h1 className='whiteTitle'>Measure Your Impact, <br /><span className='greenTitle'>Make a Difference</span></h1>
-          <p className='text'>
-          Millions of people want to reduce their carbon footprint, but don’t know where to start. We created EcoGo to make personal climate action simple and accessible, empowering everyone to take control of their environmental impact and be a part of the solution.
-          </p>
-        </TextOverlay>
-        <ArrowContainer>
-         <ScrollDownArrow onClick={handleScrollArrowClick}>
-          &#x2193;
-         </ScrollDownArrow>
-        </ArrowContainer>
-      </FullScreenVideo>
-
+            <source src={promoVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+  
+          {/* Text Overlay */}
+          <TextOverlay>
+            <h1 className="whiteTitle">
+              Measure Your Impact, <br />
+              <span className="greenTitle">Make a Difference</span>
+            </h1>
+            <p className="text">
+              Millions of people want to reduce their carbon footprint, but don’t know where to start. EcoGo makes personal climate action accessible, empowering everyone to take control of their impact and be part of the solution.
+            </p>
+          </TextOverlay>
+          <ArrowContainer>
+            <ScrollDownArrow onClick={handleScrollArrowClick}>&#x2193;</ScrollDownArrow>
+          </ArrowContainer>
+        </FullScreenVideo>
+  
+        {/* Leaf Container - Hide on mobile */}
+        {!isMobile && (
+          <LeafContainer>
+            <img src={leaf} alt="Leaf" />
+          </LeafContainer>
+        )}
+  
         {/* Section 1: Problem */}
-      <LeafContainer>
-        <img src={leaf} alt="Leaf" />
-      </LeafContainer>
-      <SectionContainer centered={false} reverse bgColor=""  ref={sectionRefs[0]} className={useIntersectionObserver(sectionRefs[0]) ? 'show' : ''}>
-        <SectionContent align='left'>
-          <h2>The Problem</h2>
-          <p>
-            As the planet warms and ecosystems are disrupted, our everyday actions contribute to the problem, and
-            <span style={{color: colors.softMint}}> transportation is a major culprit</span>. According to the International Energy Agency (IEA), transportation
-            accounts for nearly <span style={{color: colors.softMint}}>24% of global CO2 emissions</span>. What makes this issue pressing is that transportation is one of
-            the easiest habits to change.
-          </p>
-        </SectionContent>
-        <SectionImage height='80%'>
-          <img src={firstSection} alt="Problem" style={{zIndex:0}}/>
-        </SectionImage>
-      </SectionContainer>
-      {/* Section 2: Solution */}
-      <SectionContainer centered={false} reverse={false} bgColor="" ref={sectionRefs[1]} className={useIntersectionObserver(sectionRefs[1]) ? 'show' : ''}>
-        <SectionContent align="right">
-          <h2>Our Solution</h2>
-          <p>
-          <span style={{color: colors.softMint}}>EcoGo is a smart mobile app</span> that empowers you to track, reduce, and visualize your carbon footprint in real-time. Whether you’re walking, cycling, driving, or taking public transport, EcoGo calculates <span style={{color: colors.softMint}}>your environmental impact</span>, rewards sustainable choices, and helps you build eco-conscious habits—all in one engaging, easy-to-use platform.
-          </p>
-        </SectionContent>
-        <SectionImage height='100%'>
-          <img src={secondSection} alt="Solution" />
-        </SectionImage>
-      </SectionContainer>
-
-      {/* Section 3: Story with Timeline */}
-      <SectionContainer  centered reverse={false} bgColor="" ref={sectionRefs[2]} className={useIntersectionObserver(sectionRefs[2]) ? 'show' : ''}>
-        <SectionContent align="center" style={{width: '100%'}}>
-        <h2 style={{ color: colors.primaryGreen }}>Our Story</h2>
-
-         {/* Horizontal Timeline */}
-         <HorizontalTimeline>
-            <HorizontalTimeline.Item dot={null}>
-              <img src={hammerAndWrench} alt="Placeholder Logo 2" />
-              <h3>May 2024</h3>
-              <p>First prototype of the app with the initial system for carbon footprint calculation.</p>
-            </HorizontalTimeline.Item>
-
-            <HorizontalTimeline.Item dot={null}>
-              <img src={iphone} alt="Placeholder Logo 3" />
-              <h3>Sep 2024</h3>
-              <p>First release of the app to users.</p>
-            </HorizontalTimeline.Item>
-
-            <HorizontalTimeline.Item dot={null}>
-              <img src={newFeatures} alt="Placeholder Logo 4"  />
-              <h3>Jan 2025</h3>
-              <p>Added new features: track food and vehicle information based on car ID.</p>
-            </HorizontalTimeline.Item>
-
-            <HorizontalTimeline.Item dot={null}>
-              <img src={rocket} alt="Placeholder Logo 5"  />
-              <h3>Sep 2025</h3>
-              <p>Release of version 2 with improved features and performance.</p>
-            </HorizontalTimeline.Item>
-          </HorizontalTimeline>
-
-        </SectionContent>
-      </SectionContainer>
-      {/* Footer */}
-      <FooterComponent />
-    </AppLayout>
-  );
-}
+        <SectionContainer
+          centered={false}
+          reverse={!isMobile} // Reverse only on desktop
+          bgColor=""
+          ref={sectionRefs[0]}
+          className={useIntersectionObserver(sectionRefs[0]) ? 'show' : ''}
+        >
+          <SectionContent align="left">
+            <h2>The Problem</h2>
+            <p>
+              As the planet warms and ecosystems are disrupted, our everyday actions contribute to the problem, and
+              <span style={{ color: colors.softMint }}> transportation is a major culprit</span>. Transportation accounts for nearly{' '}
+              <span style={{ color: colors.softMint }}>24% of global CO2 emissions</span>. Changing our habits can make a significant impact.
+            </p>
+          </SectionContent>
+          <SectionImage height={isMobile ? '60%' : '80%'}>
+            <img src={firstSection} alt="Problem" style={{ zIndex: 0 }} />
+          </SectionImage>
+        </SectionContainer>
+  
+        {/* Section 2: Solution */}
+        <SectionContainer
+          centered={false}
+          reverse={false}
+          bgColor=""
+          ref={sectionRefs[1]}
+          className={useIntersectionObserver(sectionRefs[1]) ? 'show' : ''}
+        >
+          <SectionContent align="right">
+            <h2>Our Solution</h2>
+            <p>
+              <span style={{ color: colors.softMint }}>EcoGo is a smart mobile app</span> that empowers you to track, reduce, and visualize your carbon footprint in real-time. Whether walking, cycling, or driving, EcoGo helps you build eco-conscious habits in one easy-to-use platform.
+            </p>
+          </SectionContent>
+          <SectionImage height={isMobile ? '70%' : '100%'}>
+            <img src={secondSection} alt="Solution" />
+          </SectionImage>
+        </SectionContainer>
+  
+        {/* Section 3: Story with Timeline */}
+        <SectionContainer centered reverse={false} bgColor="" ref={sectionRefs[2]} className={useIntersectionObserver(sectionRefs[2]) ? 'show' : ''}>
+          <SectionContent align="center" style={{ width: '100%' }}>
+            <h2 style={{ color: colors.primaryGreen }}>Our Story</h2>
+  
+            {/* Horizontal Timeline */}
+            <HorizontalTimeline>
+              <HorizontalTimeline.Item dot={null}>
+                <img src={hammerAndWrench} alt="Prototype" />
+                <h3>May 2024</h3>
+                <p>First prototype with carbon footprint calculation.</p>
+              </HorizontalTimeline.Item>
+              <HorizontalTimeline.Item dot={null}>
+                <img src={iphone} alt="Release" />
+                <h3>Sep 2024</h3>
+                <p>First app release to users.</p>
+              </HorizontalTimeline.Item>
+              <HorizontalTimeline.Item dot={null}>
+                <img src={newFeatures} alt="Features" />
+                <h3>Jan 2025</h3>
+                <p>New features: food and vehicle tracking.</p>
+              </HorizontalTimeline.Item>
+              <HorizontalTimeline.Item dot={null}>
+                <img src={rocket} alt="Version 2" />
+                <h3>Sep 2025</h3>
+                <p>Version 2 with enhanced features.</p>
+              </HorizontalTimeline.Item>
+            </HorizontalTimeline>
+          </SectionContent>
+        </SectionContainer>
+  
+        <FooterComponent />
+      </AppLayout>
+    );
+  }
 
 export default HomePage;
