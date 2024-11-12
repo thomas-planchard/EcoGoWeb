@@ -34,7 +34,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent }) => {
   const menuItems: MenuItemType[] = [
     { key: '1', label: <DrawerLink to="/about">About</DrawerLink> },
     { key: '2', label: <DrawerLink to="/portfolio">Portfolio</DrawerLink> },
-    { key: '3', label: <DrawerLink to="/contact">Team</DrawerLink> },
+    { key: '3', label: <DrawerLink to="/team">Team</DrawerLink> },
   ];
 
   // Toggle drawer visibility
