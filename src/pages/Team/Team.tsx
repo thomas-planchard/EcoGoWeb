@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import  { useState } from 'react';
 import HeaderComponent from '../../components/Header';
 import FooterComponent from '../../components/Footer';
 import { AppLayout } from '../../GlobalStyle';
