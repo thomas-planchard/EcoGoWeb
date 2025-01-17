@@ -46,14 +46,14 @@ const ResumeModal = ({ onClose }: { onClose: () => void }) => {
         <h2>Download Resume</h2>
        {/* Download button for English resume */}
        <DownloadButton 
-          href='./public/assets/pdf/ThomasPlanchardEnglishResume.pdf'
+          href='../../assetd/pdf/ThomasPlanchardEnglishResume.pdf'
           download="ThomasPlanchardResume.pdf"
         >
           English
         </DownloadButton>
         {/* Download button for French resume */}
         <DownloadButton 
-          href='./public/assets/pdf/ThomasPlanchardResume.pdf' 
+          href='../../assets/pdf/ThomasPlanchardResume.pdf' 
           download="ThomasPlanchardResume.pdf"
         >
           French

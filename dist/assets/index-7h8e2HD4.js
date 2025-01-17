@@ -1392,7 +1392,7 @@ html body {
     color: white !important;
     border-color: ${xe.softMint} !important;
   }
-`,cN=({onClose:e})=>$.jsx(lN,{onClick:e,children:$.jsxs(sN,{onClick:t=>t.stopPropagation(),children:[$.jsx("h2",{children:"Download Resume"}),$.jsx(T1,{href:"./public/assets/pdf/ThomasPlanchardEnglishResume.pdf",download:"ThomasPlanchardResume.pdf",children:"English"}),$.jsx(T1,{href:"./public/assets/pdf/ThomasPlanchardResume.pdf",download:"ThomasPlanchardResume.pdf",children:"French"})]})}),uN=Y.div`
+`,cN=({onClose:e})=>$.jsx(lN,{onClick:e,children:$.jsxs(sN,{onClick:t=>t.stopPropagation(),children:[$.jsx("h2",{children:"Download Resume"}),$.jsx(T1,{href:"../../assetd/pdf/ThomasPlanchardEnglishResume.pdf",download:"ThomasPlanchardResume.pdf",children:"English"}),$.jsx(T1,{href:"../../assets/pdf/ThomasPlanchardResume.pdf",download:"ThomasPlanchardResume.pdf",children:"French"})]})}),uN=Y.div`
   width: 100%;
   padding: 4rem 2rem;
 `,dN=Y.section`
