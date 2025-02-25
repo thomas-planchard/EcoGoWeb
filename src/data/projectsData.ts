@@ -14,6 +14,8 @@ import projectSevenImage from '../assets/projects/screenManagement.jpg';
 import projectSevenImage2 from '../assets/projects/jacobi.webp';
 import projectEightImage from '../assets/projects/aiRecognizing.jpg';
 import projectEightImage2 from '../assets/projects/englishRecognition.jpg';
+import projectNineImage from '../assets/projects/quickestpath.jpeg';
+import projectNineImage2 from '../assets/projects/quickestpath2.png';
 
 
 
@@ -137,6 +139,22 @@ const projectsData = [
     "overview": "The Language Detection Device Project aims to develop an AI-powered system that detects spoken language, specifically distinguishing between English and French. Using a Raspberry Pi 4, the device listens to nearby conversations and indicates the detected language by lighting LEDs in specific colors: green for English, red for French, and blue for other languages or no detection. This device encourages students to speak English in designated areas and provides immediate feedback on language usage.",
     "execution": "The system employs machine learning, specifically deep learning with a neural network model, to recognize and classify languages based on spectrogram images generated from audio data. Training is conducted using TensorFlow and Keras libraries, while model deployment on the Raspberry Pi uses TensorFlow Lite for optimized performance. LEDs connected to the Pi’s GPIO pins visually display the language detection result, providing real-time feedback without storing or transmitting conversation data.",
     "results": "The device successfully detects spoken language in real-time, reinforcing language practice policies by visually indicating when English or French is spoken. By processing audio locally without internet connection, it safeguards user privacy while offering an effective language detection tool for educational settings.",
+  }
+  ,
+  {
+    "id": "project9",
+    "title": "Quickest Path Calculation API",
+    "client": "ALGOSUP",
+    "date": "2025-02-07",
+    "expertise": "C++, Pathfinding Algorithms, REST API Development, Transportation Optimization",
+    "platforms": "Standalone HTTP Server with JSON/XML REST API",
+    "deliverables": "Functional Specifications, Technical Documentation, C++ Source Code, Data Validation Tool, Test Suite, API User Manual",
+    "repository": "https://github.com/algosup/2024-2025-project-3-quickest-path-team-8",
+    "image": projectNineImage,
+    "image2": projectNineImage2,
+    "overview": "The Quickest Path Calculation API project is a high-performance software solution designed to compute the fastest route between two landmarks in the United States. This API, implemented in C++, provides optimized pathfinding while ensuring a response time of less than one second. The system leverages approximation heuristics to guarantee that the calculated path does not exceed the shortest path duration by more than 10%. The API is tailored for logistics companies, navigation developers, and transportation researchers who require an efficient routing system. The REST API returns results in JSON or XML format and includes a robust data validation tool to ensure the dataset integrity before processing.",
+    "execution": "The project consists of a C++-based REST API running on an HTTP server, exposing a single GET endpoint (/quickest_path) that takes two landmark IDs and returns the fastest route in XML or JSON format. The system utilizes an optimized shortest path algorithm with heuristics, ensuring that computation remains efficient while adhering to accuracy constraints. A separate Data Validation Tool verifies dataset structure, checking for duplicate connections, disconnected subgraphs, and cycles to prevent errors in routing calculations. The project follows an iterative development approach with continuous QA testing, ensuring accuracy and efficiency throughout its execution. Additionally, a comprehensive test suite validates API correctness, response time, and adherence to the approximation rule.",
+    "results": "The API successfully provides real-time path computation, delivering fast and efficient results within one second per query. The integration of approximation heuristics ensures optimal route calculation while balancing precision and performance. The Data Validation Tool guarantees dataset integrity, preventing errors caused by inconsistent or malformed data. This solution enables logistics companies and developers to integrate efficient routing capabilities into their applications while ensuring high accuracy and reliability. The project lays the foundation for scalable improvements, including expansion to global datasets and further optimizations to the pathfinding algorithm."
   }         
   ];
   

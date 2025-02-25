@@ -6,6 +6,7 @@ import projectFiveImage from '../assets/projects/wineMixer.jpg';
 import projectSixImage from '../assets/projects/unrealEngine.jpg';
 import projectSevenImage from '../assets/projects/screenManagement.jpg';
 import projectEightImage from '../assets/projects/aiRecognizing.jpg';
+import projectNineImage from '../assets/projects/quickestpath.jpeg';
 
 const projects = [
     {
@@ -63,7 +64,15 @@ const projects = [
         "description": "A device using deep learning to identify spoken languages in a room, aimed at distinguishing languages in real-time.",
         "image": projectEightImage,
         "link": "/portfolio/project8"
-    }
+    },
+    {
+        "id": "project9",
+        "title": "Quickest Path Finder",
+        "description": "Algorithm to find the quickest path between two points on a map.",
+        "image": projectNineImage,
+        "link": "/portfolio/project9"
+    },
+    
 ];
 
 export default projects;
