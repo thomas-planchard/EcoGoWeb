@@ -94,49 +94,6 @@ export const PagesSection = styled.div`
   }
 `;
 
-export const UtilitySection = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h4 {
-    margin-bottom: 1rem;
-    font-size: 3vh;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    li {
-      margin-bottom: 1rem;
-
-      a {
-        text-decoration: none;
-        font-size: 2vh;
-        color: #333;
-
-        &:hover {
-          color: ${colors.primaryGreen}; 
-        }
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    h4 {
-      font-size: 2.5vh;
-    }
-
-    ul li a {
-      font-size: 2vh;
-    }
-  }
-`;
 
 export const ContactSection = styled.div`
   flex: 1;

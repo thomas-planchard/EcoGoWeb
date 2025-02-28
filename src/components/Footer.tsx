@@ -24,7 +24,7 @@ function FooterComponent() {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+            <a href="https://www.linkedin.com/in/thomas-planchard-461782221/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
             <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
           </SocialIcons>
         </LogoSection>
@@ -36,19 +36,8 @@ function FooterComponent() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/About">About</Link></li>
             <li><Link to="/Portfolio">Portfolio</Link></li>
-            <li><Link to="/Team">Team</Link></li>
           </ul>
         </PagesSection>
-
-        {/* Utility Links */}
-        <UtilitySection>
-          <h4>Utility Pages</h4>
-          <ul>
-            <li><Link to="/404">404 Not Found</Link></li>
-            <li><Link to="/licenses">Licenses</Link></li>
-            <li><Link to="/changelog">Changelog</Link></li>
-          </ul>
-        </UtilitySection>
 
         {/* Contact Info */}
         <ContactSection>

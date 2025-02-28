@@ -34,7 +34,6 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent }) => {
   const menuItems: MenuItemType[] = [
     { key: '1', label: <DrawerLink to="/about">About</DrawerLink> },
     { key: '2', label: <DrawerLink to="/portfolio">Portfolio</DrawerLink> },
-    { key: '3', label: <DrawerLink to="/team">Team</DrawerLink> },
   ];
 
   // Toggle drawer visibility
@@ -123,7 +122,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ transparent }) => {
       >
         {menuItems.map((item) => (
           <DrawerMenuItem key={item?.key} onClick={toggleDrawer}>
-            <DrawerLink to={item?.key === '1' ? '/about' : item?.key === '2' ? '/portfolio' : '/contact'}>
+            <DrawerLink to={item?.key === '1' ? '/about' : item?.key === '2' ? '/portfolio' : '/'}>
               {item?.label}
             </DrawerLink>
           </DrawerMenuItem>
